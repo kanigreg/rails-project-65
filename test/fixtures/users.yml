@@ -1,0 +1,10 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+default: &default
+  name: <%= Faker::Name.name %>
+  email: <%= Faker::Internet.email %>
+
+one:
+  <<: *default
+
+two:
+  <<: *default

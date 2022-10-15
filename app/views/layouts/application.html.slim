@@ -2,12 +2,22 @@ doctype html
 html
   head
     title
-      | BulletinBoard
+      = t('.page_title')
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    .container
-      = yield
+  body.d-flex.flex-column.h-100
+
+    header
+      = render 'layouts/shared/nav'
+
+      = render 'layouts/shared/flash'
+
+    main.flex-shreek-0
+      .container.mt-4.mb-5.pb-5
+        .mb-3.ps-4
+          h1 = yield :title
+
+        == yield
