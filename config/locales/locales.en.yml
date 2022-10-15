@@ -1,0 +1,10 @@
+---
+en:
+  layouts:
+    application:
+      page_title: Bulletin Board
+    shared:
+      nav:
+        login: Login
+        logo: Bulletin board
+        logout: Logout
