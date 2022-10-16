@@ -1,0 +1,12 @@
+---
+en:
+  web:
+    bulletins:
+      create:
+        success: Bulletin was successfully created.
+      update:
+        success: Bulletin was successfully updated.
+      new:
+        title: New Bulletin
+      edit:
+        title: Edit Bulletin

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Title 1
+  description: Description 1
+  category: cars
+  creator: one
+
+two:
+  title: Title 2
+  description: Description 2
+  category: electronics
+  creator: one

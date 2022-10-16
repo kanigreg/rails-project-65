@@ -5,6 +5,7 @@ en:
       page_title: Bulletin Board
     shared:
       nav:
+        add_bulletin: Add
         login: Login
         logo: Bulletin board
         logout: Logout

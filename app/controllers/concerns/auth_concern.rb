@@ -17,4 +17,8 @@ module AuthConcern
   def user_signed_in?
     session[:user_id].present? && current_user.present?
   end
+
+  def authorize_user!
+    redirect_to root_path unless user_signed_in?
+  end
 end

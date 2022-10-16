@@ -1,0 +1,6 @@
+= simple_form_for bulletin do |f|
+  .mb-2 = f.input :title
+  .mb-2 = f.input :description, as: :text
+  .mb-2 = f.association :category
+
+  = f.button :submit, class: 'btn btn-primary'

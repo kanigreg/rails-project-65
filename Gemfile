@@ -70,4 +70,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'rollbar'
+gem 'simple_form'
 gem 'slim-rails'
