@@ -67,6 +67,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'active_storage_validations'
+gem 'aws-sdk-s3'
+gem 'image_processing'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'rollbar'

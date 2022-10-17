@@ -1,0 +1,1 @@
+little_prince: <%= ActiveStorage::Blob.fixture(filename: 'little_prince.jpg') %>

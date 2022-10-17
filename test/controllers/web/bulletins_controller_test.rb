@@ -8,6 +8,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @attrs = {
       title: Faker::Lorem.sentence,
       description: Faker::Lorem.paragraph,
+      image: fixture_file_upload('little_prince.jpg', 'image/jpg'),
       category_id: categories(:cars).id
     }
   end
@@ -31,7 +32,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     post bulletins_path, params: { bulletin: @attrs }
 
-    bulletin = Bulletin.find_by(@attrs)
+    bulletin = Bulletin.find_by(@attrs.slice(:title, :description))
 
     assert bulletin.present?
     assert_redirected_to bulletin_path(bulletin)

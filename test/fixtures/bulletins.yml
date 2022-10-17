@@ -5,9 +5,11 @@ one:
   description: Description 1
   category: cars
   creator: one
+# image: little_prince
 
 two:
   title: Title 2
   description: Description 2
   category: electronics
   creator: one
+# image: little_prince

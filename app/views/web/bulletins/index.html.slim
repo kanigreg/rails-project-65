@@ -1,5 +1,5 @@
 = content_for :title
-  h1 = t('.bulletins')
+  = t('.title')
 
 .row.pt-2
   == render partial: 'bulletin', collection: @bulletins

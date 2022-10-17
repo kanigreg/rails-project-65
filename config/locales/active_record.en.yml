@@ -1,0 +1,28 @@
+---
+en:
+  activerecord:
+    attributes:
+      bulletin:
+        title: Title
+        description: Description
+        image: Image
+      category:
+        name: Name
+      user:
+        email: Email
+        name: Name
+    errors:
+      messages:
+        blank: can't be blank
+        too_long: too long
+        required: required
+    models:
+      bulletin:
+        one: Bulletin
+        other: Bulletins
+      category:
+        one: Category
+        other: Categories
+      user:
+        one: User
+        other: Users

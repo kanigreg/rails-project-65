@@ -10,3 +10,5 @@ en:
         title: New Bulletin
       edit:
         title: Edit Bulletin
+      index:
+        title: Bulletins
