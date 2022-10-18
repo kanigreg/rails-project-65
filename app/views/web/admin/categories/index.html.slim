@@ -1,0 +1,17 @@
+= content_for :title
+  = t('.title')
+
+= link_to t('.new_category'), new_admin_category_path
+
+table.table.table-borderless
+  thead
+    tr
+      th = t('activerecord.attributes.category.name')
+      th = t('actions')
+
+  tbody
+    - @categories.each do |category|
+      tr
+        td = category.name
+        td
+          span = link_to t('edit'), edit_admin_category_path(category)

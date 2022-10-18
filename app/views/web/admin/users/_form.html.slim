@@ -1,0 +1,8 @@
+= simple_form_for([:admin, user]) do |f|
+  .form-inputs
+    .mb-2 = f.input :name
+    .mb-2 = f.input :email
+    .mb-2 = f.input :admin
+
+  .form-actions
+    .mt-2 = f.button :submit, class: 'btn btn-primary'

@@ -1,0 +1,14 @@
+= content_for :title
+  = t('.title')
+
+table.table.table-borderless
+  thead
+    tr
+      th = t('activerecord.attributes.bulletin.title')
+      th = t('activerecord.attirbutes.bulletin.created_at')
+
+  tbody
+    - @bulletins.each do |bulletin|
+      tr
+        td = link_to bulletin.title, bulletin
+        td = time_ago_in_words(bulletin.created_at)

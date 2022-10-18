@@ -1,6 +1,10 @@
 ---
 en:
   web:
+    admin:
+      bulletins:
+        index:
+          title: Bulletins
     bulletins:
       create:
         success: Bulletin was successfully created.

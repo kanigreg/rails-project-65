@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title
+      = t('.page_title')
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body.d-flex.flex-column.h-100
+
+    header
+      = render 'layouts/shared/nav'
+
+    main.flex-shreek-0
+      .container.mt-4.mb-5.pb-5
+        .row
+          .col-md-3
+            .nav.flex-column.nav-pills
+              = link_to t('.bulletin_in_moderation'), admin_dashboard_path, class: 'nav-link link-dark'
+              = link_to t('.bulletins'), admin_bulletins_path, class: 'nav-link link-dark'
+              = link_to t('.categories'), admin_categories_path, class: 'nav-link link-dark'
+              = link_to t('.users'), admin_users_path, class: 'nav-link link-dark'
+          .col-8
+            = render 'layouts/shared/flash'
+            .mb-3.ps-4
+              h2 = yield :title
+            = yield

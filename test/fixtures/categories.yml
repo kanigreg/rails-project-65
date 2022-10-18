@@ -8,3 +8,6 @@ electronics:
 
 toys:
   name: Toys
+
+without_bulletins:
+  name: without_bulletins

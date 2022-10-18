@@ -1,0 +1,7 @@
+---
+en:
+  web:
+    admin:
+      users:
+        index:
+          title: Users

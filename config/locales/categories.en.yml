@@ -1,0 +1,18 @@
+---
+en:
+  web:
+    admin:
+      categories:
+        create:
+          success: Category was successfully created
+        destroy:
+          success: Category was successfully destroyed
+          not_empty: Failed to destroy a category because it contain bulletins.
+        edit:
+          title: Edit Category
+        index:
+          title: Categories
+        new:
+          title: New Category
+        update:
+          success: Category was successfully created

@@ -6,3 +6,8 @@ one:
 two:
   name: "Annabell Barrows"
   email: "kerry.becker@veum.co"
+
+admin:
+  name: Gregory
+  email: gregory@email.com
+  admin: true

@@ -3,9 +3,16 @@ en:
   layouts:
     application:
       page_title: Bulletin Board
+    dashboard:
+      page_title: Dashboard
+      bulletins_in_moderation: Bulletins in moderation
+      bulletins: Bulletins
+      categories: Categories
+      users: Users
     shared:
       nav:
         add_bulletin: Add
+        admin_panel: Admin panel
         login: Login
         logo: Bulletin board
         logout: Logout
