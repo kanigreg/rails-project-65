@@ -5,14 +5,36 @@ en:
       bulletins:
         index:
           title: Bulletins
+        publish:
+          success: Bulletin was successfully published.
+          failure: Failed to publish bulletin.
+        reject:
+          success: Bulletin was successfully rejected.
+          failure: Failed to reject bulletin.
     bulletins:
+      aasm_state:
+        archived: Archived
+        draft: Draft
+        published: Published
+        rejected: Rejected
+        under_moderation: Under moderation
+      archive:
+        success: Bulletin was successfully archived.
+        failure: Failed to archive bulletin.
       create:
         success: Bulletin was successfully created.
-      update:
-        success: Bulletin was successfully updated.
-      new:
-        title: New Bulletin
       edit:
         title: Edit Bulletin
       index:
         title: Bulletins
+      new:
+        title: New Bulletin
+      to_moderate:
+        success: Bulletin has been sent to moderation.
+        failure: Failed to send for moderation.
+      update:
+        success: Bulletin was successfully updated.
+    shared:
+      bulletins:
+        to_moderate: To moderate
+        archive: Archive

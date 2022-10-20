@@ -13,6 +13,8 @@ en:
       nav:
         add_bulletin: Add
         admin_panel: Admin panel
+        home: Home
+        my_bulletins: My bulletins
         login: Login
         logo: Bulletin board
         logout: Logout

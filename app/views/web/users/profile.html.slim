@@ -17,9 +17,9 @@ table.table.table-borderless
         td = time_ago_in_words(bulletin.created_at)
         td
           span.me-1 = link_to t('show'), bulletin
-          - if policy(bulletin).publish?
-            span.me-1 = link_to t('.publish'), publish_admin_bulletin_path(bulletin), method: :patch
-          - if policy(bulletin).reject?
-            span.me-1 = link_to t('.reject'), reject_admin_bulletin_path(bulletin), method: :patch
+          - if policy(bulletin).edit?
+            span.me-1 = link_to t('edit'), edit_bulletin_path(bulletin)
+          - if policy(bulletin).to_moderate?
+            span.me-1 = link_to t('.to_moderate'), to_moderate_bulletin_path(bulletin), method: :patch
           - if policy(bulletin).archive?
             span.me-1 = link_to t('.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'link-danger', data: { confirm: t('archive_confirmation') }

@@ -57,4 +57,51 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert @bulletin.description == @attrs[:description]
     assert_redirected_to bulletin_path(@bulletin)
   end
+
+  test 'should send bulletin for modarate' do
+    bulletin = bulletins(:draft)
+    sign_in bulletin.creator
+
+    patch to_moderate_bulletin_url(bulletin)
+
+    bulletin.reload
+
+    assert_transitions_from bulletin, :draft, to: :under_moderation, on_event: :to_moderate
+    assert_response :redirect
+  end
+
+  test 'should publish bulletin' do
+    bulletin = bulletins(:under_moderation)
+    sign_in users(:admin)
+
+    patch publish_admin_bulletin_url(bulletin)
+
+    bulletin.reload
+
+    assert_transitions_from bulletin, :under_moderation, to: :published, on_event: :publish
+    assert_response :redirect
+  end
+
+  test 'should reject bulletin' do
+    bulletin = bulletins(:under_moderation)
+    sign_in users(:admin)
+
+    patch reject_admin_bulletin_url(bulletin)
+
+    bulletin.reload
+
+    assert_transitions_from bulletin, :under_moderation, to: :rejected, on_event: :reject
+    assert_response :redirect
+  end
+
+  test 'should archive bulletin' do
+    sign_in @bulletin.creator
+
+    patch archive_bulletin_url(@bulletin)
+
+    @bulletin.reload
+
+    assert_transitions_from @bulletin, :published, to: :archived, on_event: :archive
+    assert_response :redirect
+  end
 end

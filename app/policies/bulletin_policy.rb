@@ -17,10 +17,20 @@ class BulletinPolicy < ApplicationPolicy
     creator?
   end
 
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
+  def to_moderate?
+    creator? && record&.draft?
+  end
+
+  def publish?
+    admin? && record&.under_moderation?
+  end
+
+  def reject?
+    admin? && record&.under_moderation?
+  end
+
+  def archive?
+    creator? || admin?
   end
 
   private

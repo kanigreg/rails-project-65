@@ -1,15 +1,22 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &DEFAULTS
+  title: $LABEL title
+  description: $LABEL description
+  creator: one
+  category: cars
 
 one:
-  title: Title 1
-  description: Description 1
-  category: cars
-  creator: one
-# image: little_prince
+  <<: *DEFAULTS
+  state: published
 
 two:
-  title: Title 2
-  description: Description 2
+  <<: *DEFAULTS
   category: electronics
-  creator: one
-# image: little_prince
+  state: published
+
+draft:
+  <<: *DEFAULTS
+  state: draft
+
+under_moderation:
+  <<: *DEFAULTS
+  state: under_moderation

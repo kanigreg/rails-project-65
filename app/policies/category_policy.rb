@@ -16,10 +16,4 @@ class CategoryPolicy < ApplicationPolicy
   def destroy?
     admin?
   end
-
-  class Scope < Scope
-    def resolve
-      scope.all if user.admin?
-    end
-  end
 end

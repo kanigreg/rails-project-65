@@ -6,9 +6,22 @@ table.table.table-borderless
     tr
       th = t('activerecord.attributes.bulletin.title')
       th = t('activerecord.attirbutes.bulletin.created_at')
+      th = t('actions')
 
   tbody
     - @bulletins.each do |bulletin|
       tr
         td = link_to bulletin.title, bulletin
         td = time_ago_in_words(bulletin.created_at)
+        td
+          - if policy(bulletin).publish?
+            span.me-1 = link_to human_event(:publish), publish_admin_bulletin_path(bulletin), method: :patch, data: { confirm: t('publish_confirmation') }
+          - if policy(bulletin).reject?
+            span.me-1 = link_to human_event(:reject), publish_admin_bulletin_path(bulletin), method: :patch, data: { confirm: t('reject_confirmation') }
+          span.me-1
+            = link_to( \
+              human_event(:archive), \
+              publish_admin_bulletin_path(bulletin), \
+              method: :patch, \
+              class: 'link-danger', data: { confirm: t('archive_confirmation') } \
+            )

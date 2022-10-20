@@ -1,5 +1,8 @@
 ---
 en:
   actions: Actions
+  archive_confirmation: Are you sure to archive it?
   edit: Edit
+  publish_confirmation: Are you sure to publish it?
+  reject_confirmation: Are you sure to reject it?
   show: Show

@@ -8,15 +8,21 @@ nav.navbar.navbar-expand-md.navbar-light.bg-light
     )
       span.navbar-toggler-icon
     #navbarCollapse.collapse.navbar-collapse
+      ul.navbar-nav.mb-2.mb-md-0
+        li.nav-item
+          = link_to t('.home'), root_path, class: 'nav-link link-dark'
+        - if policy(:auth).authenticated?
+          li.nav-item
+            = link_to t('.my_bulletins'), profile_path, class: 'nav-link link-dark'
+          li.nav-item
+            = link_to t('.add_bulletin'), new_bulletin_path, class: 'nav-link link-dark'
       ul.navbar-nav.ms-auto.mb-2.mb-md-0
         - if policy(:dashboard).index?
           li.nav-item
             = link_to t('.admin_panel'), admin_dashboard_path, class: 'nav-link link-dark'
-        - if user_signed_in?
-          li.nav-item
-            = link_to t('.add_bulletin'), new_bulletin_path, class: 'nav-link link-dark'
-          li.nav-item
-            = link_to t('.logout'), auth_logout_path, class: 'nav-link link-dark', method: :delete
-        - else
+        - if policy(:auth).login?
           li.nav-item
             = link_to t('.login'), auth_request_url(:github), class: 'nav-link link-dark', method: :post
+        - if policy(:auth).logout?
+          li.nav-item
+            = link_to t('.logout'), auth_logout_path, class: 'nav-link link-dark', method: :delete

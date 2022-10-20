@@ -4,7 +4,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   def index
     authorize Category
 
-    @categories = policy_scope(Category)
+    @categories = Category.all
   end
 
   def new
@@ -14,7 +14,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   end
 
   def edit
-    @category = policy_scope(Category).find(params[:id])
+    @category = Category.find(params[:id])
 
     authorize @category
   end
@@ -44,7 +44,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   end
 
   def destroy
-    @category = policy_scope(Category).find(params[:id])
+    @category = Category.find(params[:id])
 
     authorize @category
 

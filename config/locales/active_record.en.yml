@@ -6,6 +6,12 @@ en:
         title: Title
         description: Description
         image: Image
+        aasm_state:
+          archived: Archived
+          draft: Draft
+          published: Published
+          rejected: Rejected
+          under_moderation: Under moderation
       category:
         name: Name
       user:

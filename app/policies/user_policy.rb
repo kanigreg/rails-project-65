@@ -9,9 +9,7 @@ class UserPolicy < ApplicationPolicy
     admin?
   end
 
-  class Scope < Scope
-    def resolve
-      scope.all if user.admin?
-    end
+  def profile?
+    user
   end
 end

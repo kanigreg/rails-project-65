@@ -2,7 +2,7 @@
 
 class Web::BulletinsController < ApplicationController
   def index
-    @bulletins = Bulletin.all.order(created_at: :desc)
+    @bulletins = Bulletin.published.order(created_at: :desc)
   end
 
   def show
@@ -10,13 +10,13 @@ class Web::BulletinsController < ApplicationController
   end
 
   def new
-    authorize_user!
+    authorize Bulletin
 
     @bulletin = Bulletin.new
   end
 
   def create
-    authorize_user!
+    authorize Bulletin
 
     @bulletin = current_user.bulletins.new(bulletin_params)
 
@@ -28,20 +28,44 @@ class Web::BulletinsController < ApplicationController
   end
 
   def edit
-    authorize_user!
-
     @bulletin = Bulletin.find(params[:id])
+
+    authorize @bulletin
   end
 
   def update
-    authorize_user!
-
     @bulletin = current_user.bulletins.find(params[:id])
+
+    authorize @bulletin
 
     if @bulletin.update(bulletin_params)
       redirect_to @bulletin, notice: t('.success')
     else
       render :edit
+    end
+  end
+
+  def to_moderate
+    @bulletin = current_user.bulletins.find(params[:id])
+
+    authorize @bulletin
+
+    if @bulletin.to_moderate!
+      redirect_back fallback_location: admin_bulletins_path, notice: t('.success')
+    else
+      redirect_back fallback_location: admin_bulletins_path, alert: t('.failure')
+    end
+  end
+
+  def archive
+    @bulletin = current_user.bulletins.find(params[:id])
+
+    authorize @bulletin
+
+    if @bulletin.archive!
+      redirect_back fallback_location: admin_bulletins_path, notice: t('.success')
+    else
+      redirect_back fallback_location: admin_bulletins_path, alert: t('.failure')
     end
   end
 
