@@ -10,7 +10,7 @@ table.table.table-borderless
       th = t('actions')
 
   tbody
-    - bulletins.each do |bulletin|
+    - @bulletins.each do |bulletin|
       tr
         td = link_to bulletin.title, bulletin
         td = bulletin.aasm.human_state
