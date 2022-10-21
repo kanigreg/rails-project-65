@@ -8,3 +8,9 @@ en:
   publish_confirmation: Are you sure to publish it?
   reject_confirmation: Are you sure to reject it?
   show: Show
+  pagination:
+    first: First
+    last: Last
+    previous: Prev
+    next: Next
+    truncate: Truncate
