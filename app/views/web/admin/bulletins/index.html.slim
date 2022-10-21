@@ -1,12 +1,15 @@
 = content_for :title
   = t('.title')
 
+.p-3.bg-light
+  == render partial: 'web/shared/search_form', locals: { q: @q }
+
 table.table.table-borderless
   thead
     tr
       th = t('activerecord.attributes.bulletin.title')
       th = t('activerecord.attributes.bulletin.state')
-      th = t('activerecord.attirbutes.bulletin.created_at')
+      th = t('activerecord.attributes.bulletin.created_at')
       th = t('actions')
 
   tbody
@@ -18,8 +21,11 @@ table.table.table-borderless
         td
           span.me-1 = link_to t('show'), bulletin
           - if policy(bulletin).publish?
-            span.me-1 = link_to t('.publish'), publish_admin_bulletin_path(bulletin), method: :patch
+            span.me-1 = link_to human_event(:publish), publish_admin_bulletin_path(bulletin), method: :patch
           - if policy(bulletin).reject?
-            span.me-1 = link_to t('.reject'), reject_admin_bulletin_path(bulletin), method: :patch
+            span.me-1 = link_to human_event(:reject), reject_admin_bulletin_path(bulletin), method: :patch
           - if policy(bulletin).archive?
-            span.me-1 = link_to t('.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'link-danger', data: { confirm: t('archive_confirmation') }
+            span.me-1 = link_to human_event(:archive), archive_bulletin_path(bulletin), method: :patch, class: 'link-danger', data: { confirm: t('archive_confirmation') }
+
+.mt-2.d-flex.justify-content-center
+  == paginate @bulletins

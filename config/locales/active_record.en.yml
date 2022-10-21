@@ -3,9 +3,11 @@ en:
   activerecord:
     attributes:
       bulletin:
+        created_at: Created at
         title: Title
         description: Description
         image: Image
+        state: State
         aasm_state:
           archived: Archived
           draft: Draft
@@ -13,6 +15,7 @@ en:
           rejected: Rejected
           under_moderation: Under moderation
       category:
+        id: Id
         name: Name
       user:
         email: Email

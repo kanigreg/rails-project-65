@@ -20,5 +20,6 @@ module BulletinBoard
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
   end
 end

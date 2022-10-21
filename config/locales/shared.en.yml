@@ -1,0 +1,9 @@
+---
+en:
+  web:
+    shared:
+      search_form:
+        reset: Reset
+        search: Search
+        search_by_title: Search by bulletin title
+        search_by_category: Select a category

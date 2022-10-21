@@ -11,13 +11,13 @@ ActiveRecord::Base.transaction do
 
   categories = Category.all
 
-  20.times do
+  100.times do
     b = Bulletin.new(
       title: Faker::Restaurant.name,
       description: Faker::Restaurant.description.slice(..999),
       category: categories.sample,
       creator: u,
-      state: :published
+      state: %i[published under_moderation].sample
     )
     filename = image_filenames.sample
     b.image.attach(

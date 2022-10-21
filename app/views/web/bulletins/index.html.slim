@@ -1,5 +1,11 @@
 = content_for :title
   = t('.title')
 
-.row.pt-2
+.p-3.bg-light
+  == render partial: 'web/shared/search_form', locals: { q: @q }
+
+.row.pt-2.mb-5
   == render partial: 'bulletin', collection: @bulletins
+
+.mt-2.d-flex.justify-content-center
+  == paginate @bulletins

@@ -1,6 +1,11 @@
 = content_for :title
   = t('.title')
 
+== link_to t('.new_bulletin'), new_bulletin_path
+
+.p-3.bg-light
+  == render partial: 'web/shared/search_form', locals: { q: @q }
+
 table.table.table-borderless
   thead
     tr
@@ -20,6 +25,9 @@ table.table.table-borderless
           - if policy(bulletin).edit?
             span.me-1 = link_to t('edit'), edit_bulletin_path(bulletin)
           - if policy(bulletin).to_moderate?
-            span.me-1 = link_to t('.to_moderate'), to_moderate_bulletin_path(bulletin), method: :patch
+            span.me-1 = link_to human_event(:to_moderate), to_moderate_bulletin_path(bulletin), method: :patch
           - if policy(bulletin).archive?
-            span.me-1 = link_to t('.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'link-danger', data: { confirm: t('archive_confirmation') }
+            span.me-1 = link_to human_event(:archive), archive_bulletin_path(bulletin), method: :patch, class: 'link-danger', data: { confirm: t('archive_confirmation') }
+
+.mt-2.d-flex.justify-content-center
+  == paginate @bulletins

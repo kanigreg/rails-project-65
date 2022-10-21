@@ -4,6 +4,7 @@ class Web::UsersController < Web::ApplicationController
   def profile
     authorize User
 
-    @bulletins = current_user.bulletins
+    @q = current_user.bulletins.ransack(params[:q])
+    @bulletins = @q.result.order(created_at: :desc).page(params[:page])
   end
 end
