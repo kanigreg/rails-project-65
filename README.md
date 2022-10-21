@@ -4,4 +4,17 @@
 
 # Bulletin board
 
-Try on [Railway](https://rails-project-65-production.up.railway.app/)
+Publish your bulletins and share with others.
+
+Try [demo](https://rails-project-65-production.up.railway.app/)
+
+## Run locally
+
+Clone repo, run in shell:
+
+```shell
+make setup
+make start
+```
+
+And go to [localhost:3000](127.0.0.1:3000)
