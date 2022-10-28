@@ -32,7 +32,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   end
 
   def update
-    @category = Category.new(category_params)
+    @category = Category.find(params[:id])
 
     authorize @category
 
