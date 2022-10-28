@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get '/', to: 'dashboard#index', as: :dashboard
       resources :bulletins do
         member do
+          patch :archive
           patch :publish
           patch :reject
         end

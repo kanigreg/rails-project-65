@@ -8,6 +8,18 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
     @bulletins = @q.result.order(created_at: :desc).page(params[:page])
   end
 
+  def archive
+    @bulletin = Bulletin.find(params[:id])
+
+    authorize @bulletin
+
+    if @bulletin.archive!
+      redirect_back fallback_location: admin_bulletins_path, notice: t('.success')
+    else
+      redirect_back fallback_location: admin_bulletins_path, alert: t('.failure')
+    end
+  end
+
   def publish
     @bulletin = Bulletin.find(params[:id])
 

@@ -25,7 +25,7 @@ table.table.table-borderless
           - if policy(bulletin).reject?
             span.me-1 = link_to human_event(:reject), reject_admin_bulletin_path(bulletin), method: :patch
           - if policy(bulletin).archive?
-            span.me-1 = link_to human_event(:archive), archive_bulletin_path(bulletin), method: :patch, class: 'link-danger', data: { confirm: t('archive_confirmation') }
+            span.me-1 = link_to human_event(:archive), archive_admin_bulletin_path(bulletin), method: :patch, class: 'link-danger', data: { confirm: t('archive_confirmation') }
 
 .mt-2.d-flex.justify-content-center
   == paginate @bulletins

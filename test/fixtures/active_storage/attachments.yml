@@ -7,3 +7,13 @@ two_bulletin_image:
   name: image
   record: two (Bulletin)
   blob: little_prince
+
+draft_bulletin_image:
+  name: image
+  record: draft (Bulletin)
+  blob: little_prince
+
+under_moderation_bulletin_image:
+  name: image
+  record: under_moderation (Bulletin)
+  blob: little_prince
