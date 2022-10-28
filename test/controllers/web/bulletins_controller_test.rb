@@ -39,7 +39,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'edit' do
-    sign_in @bulletin.creator
+    sign_in @bulletin.user
 
     get edit_bulletin_path(@bulletin)
 
@@ -47,7 +47,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'update' do
-    sign_in @bulletin.creator
+    sign_in @bulletin.user
 
     put bulletin_path(@bulletin), params: { bulletin: @attrs }
 
@@ -60,7 +60,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should send bulletin for modarate' do
     bulletin = bulletins(:draft)
-    sign_in bulletin.creator
+    sign_in bulletin.user
 
     patch to_moderate_bulletin_url(bulletin)
 
@@ -95,7 +95,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should archive bulletin' do
-    sign_in @bulletin.creator
+    sign_in @bulletin.user
 
     patch archive_bulletin_url(@bulletin)
 

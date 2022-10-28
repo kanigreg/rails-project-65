@@ -6,4 +6,4 @@
     = image_tag @bulletin.image.variant(resize_to_limit: [400, 600]), class: 'img-thumbnail mb-2'
     p = @bulletin.description
   .col-4
-    h5 = @bulletin.creator.name
+    h5 = @bulletin.user.name

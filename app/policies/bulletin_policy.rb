@@ -14,11 +14,11 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def update?
-    creator?
+    owner?
   end
 
   def to_moderate?
-    creator? && record&.may_to_moderate?
+    owner? && record&.may_to_moderate?
   end
 
   def publish?
@@ -30,12 +30,12 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def archive?
-    (creator? || admin?) && record&.may_archive?
+    (owner? || admin?) && record&.may_archive?
   end
 
   private
 
-  def creator?
-    record&.creator == user
+  def owner?
+    record&.user == user
   end
 end

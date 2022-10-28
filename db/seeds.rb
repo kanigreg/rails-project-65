@@ -16,7 +16,7 @@ ActiveRecord::Base.transaction do
       title: Faker::Restaurant.name,
       description: Faker::Restaurant.description.slice(..999),
       category: categories.sample,
-      creator: u,
+      user: u,
       state: %i[published under_moderation].sample
     )
     filename = image_filenames.sample
