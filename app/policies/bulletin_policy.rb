@@ -18,19 +18,19 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def to_moderate?
-    creator? && record&.draft?
+    creator? && record&.may_to_moderate?
   end
 
   def publish?
-    admin? && record&.under_moderation?
+    admin? && record&.may_publish?
   end
 
   def reject?
-    admin? && record&.under_moderation?
+    admin? && record&.may_reject?
   end
 
   def archive?
-    creator? || admin?
+    (creator? || admin?) && record&.may_archive?
   end
 
   private
