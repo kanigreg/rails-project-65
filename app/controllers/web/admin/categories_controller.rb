@@ -37,7 +37,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
     authorize @category
 
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: t('.succcess')
+      redirect_to admin_categories_path, notice: t('.success')
     else
       render :edit
     end

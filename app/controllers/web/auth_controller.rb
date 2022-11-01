@@ -7,6 +7,8 @@ class Web::AuthController < Web::ApplicationController
   end
 
   def callback
+    return redirect_to root_path if user_signed_in?
+
     email, name = auth[:info].values_at(:email, :name)
 
     user = User.find_or_initialize_by(email: email.downcase)

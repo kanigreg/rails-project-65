@@ -5,3 +5,5 @@ en:
       users:
         index:
           title: Users
+        update:
+          success: User was successfully updated

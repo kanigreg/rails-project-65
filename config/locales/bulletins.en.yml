@@ -11,6 +11,9 @@ en:
         reject:
           success: Bulletin was successfully rejected.
           failure: Failed to reject bulletin.
+        archive:
+          success: Bulletin was successfully archived.
+          failure: Failed to archive bulletin.
     bulletins:
       aasm_state:
         archived: Archived

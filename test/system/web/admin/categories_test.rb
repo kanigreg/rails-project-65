@@ -23,13 +23,13 @@ class Web::Admin::CategoriesTest < ApplicationSystemTestCase
 
     assert_text 'Category was successfully created'
 
-    created_category = Categroy.last
+    created_category = Category.last
     assert created_category.name == @attr[:name]
   end
 
   test 'updating a Category' do
     visit admin_categories_url
-    click_on 'edit', match: :first
+    click_on 'Edit', match: :first
 
     fill_in 'Name', with: @attr[:name]
     click_on 'Update Category'

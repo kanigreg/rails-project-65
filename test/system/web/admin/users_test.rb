@@ -19,7 +19,7 @@ class Web::Admin::UsersTest < ApplicationSystemTestCase
 
   test 'updating a User' do
     visit admin_users_url
-    click_on 'edit', match: :first
+    click_on 'Edit', match: :first
 
     fill_in 'Email', with: @attrs[:email]
     fill_in 'Name', with: @attrs[:name]
@@ -28,6 +28,6 @@ class Web::Admin::UsersTest < ApplicationSystemTestCase
     assert_text 'User was successfully updated'
 
     last_updated = User.order(:updated_at).last
-    assert last_updated.name == @attr[:name]
+    assert last_updated.name == @attrs[:name]
   end
 end
