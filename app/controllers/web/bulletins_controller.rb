@@ -28,7 +28,6 @@ class Web::BulletinsController < ApplicationController
     if @bulletin.save
       redirect_to @bulletin, notice: t('.success')
     else
-      binding.irb
       render :new
     end
   end
