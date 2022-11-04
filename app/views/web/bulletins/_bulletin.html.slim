@@ -1,9 +1,9 @@
 .col-3.pt-2
-  .card.shadow-sm
-    = image_tag bulletin.image, class: 'x-object-fit-cover card-img-top'
+  .card.shadow-sm.hoverable
+    = image_tag bulletin.image, class: 'x-object-fit-cover card-img-top', height: 200
     .card-body
       h5.card-title
         .card-link
-          = link_to bulletin.title, bulletin_path(bulletin)
+          = link_to bulletin.title, bulletin_path(bulletin), class: 'stretched-link'
       h6.card-subtitle.mb-2.text-muted
         = time_ago_in_words(bulletin.created_at)

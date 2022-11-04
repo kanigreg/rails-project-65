@@ -25,7 +25,7 @@ class Web::Admin::UsersTest < ApplicationSystemTestCase
     fill_in 'Name', with: @attrs[:name]
     click_on 'Update User'
 
-    assert_text 'User was successfully updated'
+    assert page.has_content?('User was successfully updated')
 
     last_updated = User.order(:updated_at).last
     assert last_updated.name == @attrs[:name]

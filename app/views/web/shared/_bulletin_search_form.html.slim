@@ -1,0 +1,9 @@
+= search_form_for q, url: url do |f|
+  .row.my-2
+    .col-6
+      = f.input :title_i_cont, label: false, hint: t('.search_by_title'), html: { class: 'mb-3' }
+    .col-4
+      = f.input :state_eq, collection: options_for_bulletin_states, label: false, hint: t('.search_by_state'), html: { class: 'mb-3' }
+    .col-2.d-grid.gap-1
+      = f.submit t('search'), class: 'btn btn-primary'
+      = link_to t('reset'), url_for, class: 'btn btn-outline-primary'

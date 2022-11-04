@@ -12,8 +12,7 @@ class Bulletin < ApplicationRecord
   validates :description, presence: true, length: { maximum: 1000 }
   validates :image, attached: true,
                     content_type: %i[png jpg jpeg],
-                    size: { less_than: 5.megabytes },
-                    presence: true
+                    size: { less_than: 5.megabytes }
 
   aasm column: :state, whiny_transitions: false do
     state :draft, initial: true

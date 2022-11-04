@@ -30,6 +30,8 @@ en:
         title: Edit Bulletin
       index:
         title: Bulletins
+        search_by_title: Search by title
+        search_by_category: Select a category
       new:
         title: New Bulletin
       to_moderate:

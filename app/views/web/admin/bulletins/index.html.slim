@@ -1,8 +1,8 @@
 = content_for :title
   = t('.title')
 
-.p-3.bg-light
-  == render partial: 'web/shared/search_form', locals: { q: @q }
+.p-3
+  == render partial: 'web/shared/bulletin_search_form', locals: { q: @q, url: admin_bulletins_path }
 
 table.table.table-borderless
   thead
@@ -20,12 +20,7 @@ table.table.table-borderless
         td = time_ago_in_words(bulletin.created_at)
         td
           span.me-1 = link_to t('show'), bulletin
-          - if policy(bulletin).publish?
-            span.me-1 = link_to human_event(:publish), publish_admin_bulletin_path(bulletin), method: :patch
-          - if policy(bulletin).reject?
-            span.me-1 = link_to human_event(:reject), reject_admin_bulletin_path(bulletin), method: :patch
-          - if policy(bulletin).archive?
-            span.me-1 = link_to human_event(:archive), archive_admin_bulletin_path(bulletin), method: :patch, class: 'link-danger', data: { confirm: t('archive_confirmation') }
+          == render partial: 'web/admin/shared/bulletin_actions', locals: { bulletin: bulletin }
 
 .mt-2.d-flex.justify-content-center
   == paginate @bulletins

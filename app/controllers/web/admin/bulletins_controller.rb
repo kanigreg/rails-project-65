@@ -2,7 +2,7 @@
 
 class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   def index
-    authorize Bulletin
+    authorize [:admin, Bulletin]
 
     @q = Bulletin.ransack(params[:q])
     @bulletins = @q.result.order(created_at: :desc).page(params[:page])
@@ -11,7 +11,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   def archive
     @bulletin = Bulletin.find(params[:id])
 
-    authorize @bulletin
+    authorize [:admin, @bulletin]
 
     if @bulletin.archive!
       redirect_back fallback_location: admin_bulletins_path, notice: t('.success')
@@ -23,7 +23,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   def publish
     @bulletin = Bulletin.find(params[:id])
 
-    authorize @bulletin
+    authorize [:admin, @bulletin]
 
     if @bulletin.publish!
       redirect_back fallback_location: admin_bulletins_path, notice: t('.success')
@@ -35,7 +35,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   def reject
     @bulletin = Bulletin.find(params[:id])
 
-    authorize @bulletin
+    authorize [:admin, @bulletin]
 
     if @bulletin.reject!
       redirect_back fallback_location: admin_bulletins_path, notice: t('.success')

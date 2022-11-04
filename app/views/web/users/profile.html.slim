@@ -3,8 +3,8 @@
 
 == link_to t('.new_bulletin'), new_bulletin_path
 
-.p-3.bg-light
-  == render partial: 'web/shared/search_form', locals: { q: @q }
+.p-3
+  == render partial: 'web/shared/bulletin_search_form', locals: { q: @q, url: profile_path }
 
 table.table.table-borderless
   thead
@@ -27,7 +27,7 @@ table.table.table-borderless
           - if policy(bulletin).to_moderate?
             span.me-1 = link_to human_event(:to_moderate), to_moderate_bulletin_path(bulletin), method: :patch
           - if policy(bulletin).archive?
-            span.me-1 = link_to human_event(:archive), archive_bulletin_path(bulletin), method: :patch, class: 'link-danger', data: { confirm: t('archive_confirmation') }
+            span.me-1 = link_to human_event(:archive), archive_bulletin_path(bulletin), method: :patch, class: 'link-danger', data: { confirm: t('confirmation.archive') }
 
 .mt-2.d-flex.justify-content-center
   == paginate @bulletins

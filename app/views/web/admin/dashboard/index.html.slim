@@ -14,14 +14,4 @@ table.table.table-borderless
         td = link_to bulletin.title, bulletin
         td = time_ago_in_words(bulletin.created_at)
         td
-          - if policy(bulletin).publish?
-            span.me-1 = link_to human_event(:publish), publish_admin_bulletin_path(bulletin), method: :patch, data: { confirm: t('publish_confirmation') }
-          - if policy(bulletin).reject?
-            span.me-1 = link_to human_event(:reject), publish_admin_bulletin_path(bulletin), method: :patch, data: { confirm: t('reject_confirmation') }
-          span.me-1
-            = link_to( \
-              human_event(:archive), \
-              publish_admin_bulletin_path(bulletin), \
-              method: :patch, \
-              class: 'link-danger', data: { confirm: t('archive_confirmation') } \
-            )
+          == render partial: 'web/admin/shared/bulletin_actions', locals: { bulletin: bulletin }

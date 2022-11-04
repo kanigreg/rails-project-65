@@ -2,12 +2,16 @@
 
 class Web::BulletinsController < ApplicationController
   def index
+    authorize Bulletin
+
     @q = Bulletin.ransack(params[:q])
     @bulletins = @q.result.published.order(created_at: :desc).page(params[:page])
   end
 
   def show
     @bulletin = Bulletin.find(params[:id])
+
+    authorize @bulletin
   end
 
   def new
@@ -24,6 +28,7 @@ class Web::BulletinsController < ApplicationController
     if @bulletin.save
       redirect_to @bulletin, notice: t('.success')
     else
+      binding.irb
       render :new
     end
   end

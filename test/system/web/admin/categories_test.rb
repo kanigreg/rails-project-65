@@ -21,7 +21,7 @@ class Web::Admin::CategoriesTest < ApplicationSystemTestCase
     fill_in 'Name', with: @attr[:name]
     click_on 'Create Category'
 
-    assert_text 'Category was successfully created'
+    assert page.has_content?('Category was successfully created')
 
     created_category = Category.last
     assert created_category.name == @attr[:name]
@@ -34,7 +34,7 @@ class Web::Admin::CategoriesTest < ApplicationSystemTestCase
     fill_in 'Name', with: @attr[:name]
     click_on 'Update Category'
 
-    assert_text 'Category was successfully updated'
+    assert page.has_content?('Category was successfully updated')
 
     last_updated = Category.order(:updated_at).last
     assert last_updated.name == @attr[:name]

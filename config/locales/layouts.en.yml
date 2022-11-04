@@ -1,8 +1,6 @@
 ---
 en:
   layouts:
-    application:
-      page_title: Bulletin Board
     dashboard:
       page_title: Dashboard
       bulletins_in_moderation: Bulletins in moderation
@@ -10,6 +8,8 @@ en:
       categories: Categories
       users: Users
     shared:
+      head:
+        page_title: Bulletin board
       nav:
         add_bulletin: Add
         admin_panel: Admin panel

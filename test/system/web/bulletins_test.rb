@@ -23,7 +23,7 @@ class Web::BulletinsTest < ApplicationSystemTestCase
 
     click_on 'Create Bulletin'
 
-    assert_text 'Bulletin was successfully created'
+    assert page.has_content?('Bulletin was successfully created')
 
     craeted_bulletin = Bulletin.last
 
@@ -42,7 +42,7 @@ class Web::BulletinsTest < ApplicationSystemTestCase
 
     click_on 'Update Bulletin'
 
-    assert_text 'Bulletin was successfully updated'
+    assert page.has_content?('Bulletin was successfully updated')
 
     updated_bulletin = Bulletin.order(:updated_at).last
 
@@ -57,7 +57,7 @@ class Web::BulletinsTest < ApplicationSystemTestCase
       click_on 'To moderate'
     end
 
-    assert_text 'Bulletin has been sent to moderation'
+    assert page.has_content?('Bulletin has been sent to moderation')
 
     draft_bulletin.reload
 
@@ -74,7 +74,7 @@ class Web::BulletinsTest < ApplicationSystemTestCase
       end
     end
 
-    assert_text 'Bulletin was successfully archived'
+    assert page.has_content?('Bulletin was successfully archived')
 
     draft_bulletin.reload
 

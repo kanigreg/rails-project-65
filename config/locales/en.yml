@@ -1,12 +1,15 @@
 ---
 en:
   actions: Actions
-  archive_confirmation: Are you sure to archive it?
+  confirmation:
+    archive: Are you sure to archive it?
+    destroy: Are you sure to destroy it?
+    publish: Are you sure to publish it?
+    reject: Are you sure to reject it?
   edit: Edit
   destroy: Destroy
-  destroy_confirmation: Are you sure to destroy it?
-  publish_confirmation: Are you sure to publish it?
-  reject_confirmation: Are you sure to reject it?
+  reset: Reset
+  search: Search
   show: Show
   pagination:
     first: First
