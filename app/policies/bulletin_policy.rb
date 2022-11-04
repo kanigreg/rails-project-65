@@ -6,7 +6,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def show?
-    creator? || record&.published?
+    admin? || creator? || record&.published?
   end
 
   def create?
