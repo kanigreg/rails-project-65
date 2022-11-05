@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
     delete 'auth/logout', to: 'auth#logout'
 
-    get 'profile', to: 'users#profile'
+    resource :profile, only: :show
 
     resources :bulletins do
       member do
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     namespace :admin do
       get '/', to: 'dashboard#index', as: :dashboard
-      resources :bulletins do
+      resources :bulletins, only: :index do
         member do
           patch :archive
           patch :publish
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
         end
       end
       resources :categories
-      resources :users
+      resources :users, only: %i[index edit update]
     end
   end
 end
