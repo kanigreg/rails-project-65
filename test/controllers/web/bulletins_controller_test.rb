@@ -59,8 +59,8 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     @bulletin.reload
 
-    assert @bulletin.title == @attrs[:title]
-    assert @bulletin.description == @attrs[:description]
+    assert_equal @attrs[:title], @bulletin.title
+    assert_equal @attrs[:description], @bulletin.description
     assert_redirected_to bulletin_path(@bulletin)
   end
 
@@ -72,31 +72,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     bulletin.reload
 
-    assert_transitions_from bulletin, :draft, to: :under_moderation, on_event: :to_moderate
-    assert_response :redirect
-  end
-
-  test 'should publish bulletin' do
-    bulletin = bulletins(:under_moderation)
-    sign_in users(:admin)
-
-    patch publish_admin_bulletin_url(bulletin)
-
-    bulletin.reload
-
-    assert_transitions_from bulletin, :under_moderation, to: :published, on_event: :publish
-    assert_response :redirect
-  end
-
-  test 'should reject bulletin' do
-    bulletin = bulletins(:under_moderation)
-    sign_in users(:admin)
-
-    patch reject_admin_bulletin_url(bulletin)
-
-    bulletin.reload
-
-    assert_transitions_from bulletin, :under_moderation, to: :rejected, on_event: :reject
+    assert bulletin.under_moderation?
     assert_response :redirect
   end
 
@@ -107,7 +83,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     @bulletin.reload
 
-    assert_transitions_from @bulletin, :published, to: :archived, on_event: :archive
+    assert @bulletin.archived?
     assert_response :redirect
   end
 end

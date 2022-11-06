@@ -27,8 +27,8 @@ class Web::Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     patch admin_user_url(@user), params: { user: @attrs }
     @user.reload
 
-    assert @user.email == @attrs[:email]
-    assert @user.name = @attrs[:name]
+    assert_equal @attrs[:email], @user.email
+    assert_equal @attrs[:name], @user.name
     assert_redirected_to admin_users_url
   end
 end
