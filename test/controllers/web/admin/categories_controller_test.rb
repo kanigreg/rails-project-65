@@ -23,10 +23,11 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create category' do
-    assert_difference('Category.count') do
-      post admin_categories_url, params: { category: @attr }
-    end
+    post admin_categories_url, params: { category: @attr }
 
+    created_category = Category.order(:created_at).last
+
+    assert_equal @attr[:name], created_category.name
     assert_redirected_to admin_categories_url
   end
 
