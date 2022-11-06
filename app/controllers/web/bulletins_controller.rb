@@ -4,6 +4,7 @@ class Web::BulletinsController < ApplicationController
   def index
     @q = Bulletin.ransack(params[:q])
     @bulletins = @q.result.published.order(created_at: :desc).page(params[:page])
+    @options_for_categories = Category.pluck(:name, :id)
   end
 
   def show
