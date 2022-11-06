@@ -6,7 +6,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def show?
-    admin? || creator? || record&.published?
+    creator?
   end
 
   def create?
@@ -15,14 +15,6 @@ class BulletinPolicy < ApplicationPolicy
 
   def update?
     creator?
-  end
-
-  def to_moderate?
-    creator? && record&.may_to_moderate?
-  end
-
-  def archive?
-    creator? && record&.may_archive?
   end
 
   private

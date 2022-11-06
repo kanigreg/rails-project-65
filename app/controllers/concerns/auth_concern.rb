@@ -17,4 +17,10 @@ module AuthConcern
   def user_signed_in?
     session[:user_id].present? && current_user.present?
   end
+
+  def authenticate_user!
+    raise NotAutenticatedError unless user_signed_in?
+  end
+
+  class NotAutenticatedError < StandardError; end
 end

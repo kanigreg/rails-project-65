@@ -1,11 +1,12 @@
-- if policy([:admin, bulletin]).publish?
+- if bulletin.may_publish?
   span.me-1 = link_to human_event(:publish), publish_admin_bulletin_path(bulletin), method: :patch, data: { confirm: t('confirmation.publish') }
-- if policy([:admin, bulletin]).reject?
+- if bulletin.may_reject?
   span.me-1 = link_to human_event(:reject), publish_admin_bulletin_path(bulletin), method: :patch, data: { confirm: t('confirmation.reject') }
-span.me-1
-  = link_to( \
-    human_event(:archive), \
-    publish_admin_bulletin_path(bulletin), \
-    method: :patch, \
-    class: 'link-danger', data: { confirm: t('confirmation.archive') } \
-  )
+- if bulletin.may_archive?
+  span.me-1
+    = link_to( \
+      human_event(:archive), \
+      publish_admin_bulletin_path(bulletin), \
+      method: :patch, \
+      class: 'link-danger', data: { confirm: t('confirmation.archive') } \
+    )

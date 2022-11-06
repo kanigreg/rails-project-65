@@ -21,7 +21,5 @@ module BulletinBoard
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
-
-    config.action_dispatch.rescue_responses['Pundit::NotAuthorizedError'] = :forbidden
   end
 end

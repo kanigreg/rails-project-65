@@ -1,6 +1,8 @@
 ---
 en:
+  access_denied: You do not have enough permissions to do this.
   actions: Actions
+  admin_only: This section is only available to administrators.
   confirmation:
     archive: Are you sure to archive it?
     destroy: Are you sure to destroy it?
@@ -8,6 +10,7 @@ en:
     reject: Are you sure to reject it?
   edit: Edit
   destroy: Destroy
+  not_authenticated: You need to log in to do this.
   reset: Reset
   search: Search
   show: Show

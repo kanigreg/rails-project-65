@@ -2,26 +2,18 @@
 
 class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   def index
-    authorize Category
-
     @categories = Category.all
   end
 
   def new
-    authorize Category
-
     @category = Category.new
   end
 
   def edit
     @category = Category.find(params[:id])
-
-    authorize @category
   end
 
   def create
-    authorize Category
-
     @category = Category.new(category_params)
 
     if @category.save
@@ -34,8 +26,6 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   def update
     @category = Category.find(params[:id])
 
-    authorize @category
-
     if @category.update(category_params)
       redirect_to admin_categories_path, notice: t('.success')
     else
@@ -45,8 +35,6 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-
-    authorize @category
 
     if @category.bulletins.empty?
       @category.destroy

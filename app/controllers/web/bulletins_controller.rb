@@ -2,8 +2,6 @@
 
 class Web::BulletinsController < ApplicationController
   def index
-    authorize Bulletin
-
     @q = Bulletin.ransack(params[:q])
     @bulletins = @q.result.published.order(created_at: :desc).page(params[:page])
   end
@@ -15,12 +13,14 @@ class Web::BulletinsController < ApplicationController
   end
 
   def new
+    authenticate_user!
     authorize Bulletin
 
     @bulletin = Bulletin.new
   end
 
   def create
+    authenticate_user!
     authorize Bulletin
 
     @bulletin = current_user.bulletins.new(bulletin_params)
@@ -33,13 +33,17 @@ class Web::BulletinsController < ApplicationController
   end
 
   def edit
+    authenticate_user!
+
     @bulletin = Bulletin.find(params[:id])
 
     authorize @bulletin
   end
 
   def update
-    @bulletin = current_user.bulletins.find(params[:id])
+    authenticate_user!
+
+    @bulletin = Bulletin.find(params[:id])
 
     authorize @bulletin
 
@@ -51,26 +55,30 @@ class Web::BulletinsController < ApplicationController
   end
 
   def to_moderate
-    @bulletin = current_user.bulletins.find(params[:id])
+    authenticate_user!
 
-    authorize @bulletin
+    @bulletin = Bulletin.find(params[:id])
+
+    authorize @bulletin, :update?
 
     if @bulletin.to_moderate!
-      redirect_back fallback_location: admin_bulletins_path, notice: t('.success')
+      redirect_back fallback_location: profile_path, notice: t('.success')
     else
-      redirect_back fallback_location: admin_bulletins_path, alert: t('.failure')
+      redirect_back fallback_location: profile_path, alert: t('.failure')
     end
   end
 
   def archive
-    @bulletin = current_user.bulletins.find(params[:id])
+    authenticate_user!
 
-    authorize @bulletin
+    @bulletin = Bulletin.find(params[:id])
+
+    authorize @bulletin, :update?
 
     if @bulletin.archive!
-      redirect_back fallback_location: admin_bulletins_path, notice: t('.success')
+      redirect_back fallback_location: profile_path, notice: t('.success')
     else
-      redirect_back fallback_location: admin_bulletins_path, alert: t('.failure')
+      redirect_back fallback_location: profile_path, alert: t('.failure')
     end
   end
 

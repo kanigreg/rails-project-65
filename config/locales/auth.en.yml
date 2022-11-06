@@ -1,0 +1,5 @@
+---
+en:
+  auth:
+    failure: Failure to authenticate a user.
+    success: Success.
