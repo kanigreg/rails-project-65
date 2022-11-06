@@ -13,13 +13,12 @@ class Web::AuthController < Web::ApplicationController
 
     user = User.find_or_initialize_by(email: email.downcase)
 
-    unless user.persisted?
-      user.name = name
-      user.save!
+    unless user.update(name: name)
+      return redirect_to root_path, alert: t('.failure')
     end
 
     sign_in user
-    redirect_to root_path
+    redirect_to root_path, notice: t('.success')
   end
 
   private
