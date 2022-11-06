@@ -19,6 +19,12 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'show' do
+    get bulletins_path(@bulletin)
+
+    assert_response :success
+  end
+
   test 'new' do
     sign_in users(:one)
 
