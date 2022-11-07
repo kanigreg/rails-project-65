@@ -1,5 +1,7 @@
 ---
 en:
-  auth:
-    failure: Failure to authenticate a user.
-    success: Success.
+  web:
+    auth:
+      callback:
+        failure: Failure to authenticate a user.
+        success: Success.

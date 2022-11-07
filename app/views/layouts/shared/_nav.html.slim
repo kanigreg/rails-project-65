@@ -20,9 +20,9 @@ nav.navbar.navbar-expand-md.navbar-light.bg-light
         - if user_signed_in? && current_user.admin?
           li.nav-item
             = link_to t('.admin_panel'), admin_dashboard_path, class: 'nav-link link-dark'
-        - if user_signed_in?
+        - unless user_signed_in?
           li.nav-item
             = link_to t('.login'), auth_request_url(:github), class: 'nav-link link-dark', method: :post
-        - unless user_signed_in?
+        - if user_signed_in?
           li.nav-item
             = link_to t('.logout'), auth_logout_path, class: 'nav-link link-dark', method: :delete
