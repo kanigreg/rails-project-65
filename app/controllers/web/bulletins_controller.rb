@@ -15,14 +15,12 @@ class Web::BulletinsController < Web::ApplicationController
 
   def new
     authenticate_user!
-    authorize Bulletin
 
     @bulletin = Bulletin.new
   end
 
   def create
     authenticate_user!
-    authorize Bulletin
 
     @bulletin = current_user.bulletins.new(bulletin_params)
 
